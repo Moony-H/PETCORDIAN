@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.sangcomz:fishbun:1.0.0-beta01@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0020c487868ff5bbd836675d1094d8df/transformed/fishbun-1.0.0-beta01/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0020c487868ff5bbd836675d1094d8df/transformed/fishbun-1.0.0-beta01/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0020c487868ff5bbd836675d1094d8df/transformed/fishbun-1.0.0-beta01/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.sangcomz/fishbun/1.0.0-beta01/441e6fe7745cc10c407340ec80eebb2645f7408/fishbun-1.0.0-beta01-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.sangcomz/fishbun/1.0.0-beta01/3d1d52161a7cfa6be32e66a0aa3dcbf12d11754e/fishbun-1.0.0-beta01-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/fragment_post_image_test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="post image"
+        />
+    <TextView
+        android:id="@+id/fragment_post_image_test_origin_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="origin"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        />
+    <ImageView
+        android:id="@+id/fragment_post_image_test_origin_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_origin_text"
+
+        />
+    <TextView
+        android:id="@+id/fragment_post_image_test_result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_origin_image"
+        />
+    <ImageView
+        android:id="@+id/fragment_post_image_test_result_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_result_text"
+        android:scaleType="center"
+        />
+    <Button
+        android:id="@+id/fragment_post_image_test_take_picture_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_result_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="camera"
+        />
+    <Button
+        android:id="@+id/fragment_post_image_test_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_post_image_test_take_picture_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="gallery"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

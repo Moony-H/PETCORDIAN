@@ -1,0 +1,93 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.hiya.jacoco-android'
+apply plugin: 'de.mobilej.unmock'
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.hiya:jacoco-android:0.2'
+        classpath 'co.riiid:gradle-github-plugin:0.4.2'
+    }
+}
+
+
+android {
+    compileSdkVersion gradle.compileSdk
+
+    defaultConfig {
+        minSdkVersion gradle.minSdk
+        targetSdkVersion gradle.targetSdk
+        consumerProguardFile('proguard-rules.pro')
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+apply plugin: 'co.riiid.gradle'
+
+apply from: '../publish/release.gradle'
+
+unMock {
+    keep "android.net.Uri"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.androidx_version"
+
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_version"
+    implementation "com.google.android.material:material:$rootProject.material_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'org.mockito:mockito-android:3.0.0'
+
+    compileOnly "io.coil-kt:coil:$rootProject.coil_version"
+    compileOnly "com.github.bumptech.glide:glide:$rootProject.glide_version"
+}
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
+configurations.all{
+    resolutionStrategy {
+        eachDependency { details ->
+            if ('org.jacoco' == details.requested.group) {
+                details.useVersion "0.8.7"
+            }
+        }
+    }
+}
