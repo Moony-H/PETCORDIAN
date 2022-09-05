@@ -18,7 +18,6 @@
             app:contentScrim="@color/white"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="aaaaa"
             app:scrimAnimationDuration="80"
             >
 
