@@ -10,7 +10,7 @@ class MainViewModel:ViewModel() {
     private var _currentYearMonth=MutableLiveData<YearMonth>(YearMonth.now())
     val currentYearMonth:LiveData<YearMonth>
         get()=_currentYearMonth
-
+    var list= listOf<Int>()
 
 
     fun addMonthValue(num:Long){
