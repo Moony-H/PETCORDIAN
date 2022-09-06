@@ -1,7 +1,6 @@
 package com.example.testapplication.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +22,6 @@ class ScrollFragment:Fragment() {
     ): View {
 
         _binding=FragmentScrollBinding.inflate(layoutInflater,container,false)
-
-
         binding.fragmentScrollAppBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener{appBarLayout, verticalOffset ->
             if(abs(verticalOffset)-appBarLayout.totalScrollRange==0){
                 //접혔을 때
@@ -33,10 +30,6 @@ class ScrollFragment:Fragment() {
                 binding.fragmentScrollTitle.visibility=View.GONE
             }
         })
-        binding.fragmentScrollStickyScrollView.setHeaders(arrayListOf(binding.tvHello2,binding.tvHello4,binding.tvHello6,binding.tvHello8))
-        binding.fragmentScrollStickyScrollView.viewTreeObserver.addOnDrawListener {
-
-        }
 
         return binding.root
     }
