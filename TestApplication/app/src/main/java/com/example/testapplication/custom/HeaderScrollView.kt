@@ -2,7 +2,6 @@ package com.example.testapplication.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
@@ -14,8 +13,7 @@ class HeaderScrollView:NestedScrollView {
     private var headers=ArrayList<View>()
     private lateinit var viewGroup:ViewGroup
     private lateinit var headersHeadBounds:Array<MutablePair<Int,Int>>
-    private var nowHeader=0
-    private var stickHeader:View?=null
+    private var nowHeaderIndex=0
     constructor(context: Context):super(context){
         init()
     }
@@ -27,7 +25,7 @@ class HeaderScrollView:NestedScrollView {
 
 
         this.viewTreeObserver.addOnDrawListener {
-            if(headersHeadBounds[nowHeader].first<=scrollY && headersHeadBounds[nowHeader].second>=scrollY) {
+            if(headersHeadBounds[nowHeaderIndex].first<=scrollY && headersHeadBounds[nowHeaderIndex].second>=scrollY) {
                 stickHeader()
             }else{
 
@@ -51,22 +49,26 @@ class HeaderScrollView:NestedScrollView {
     }
 
     private fun stickHeader(){
-        headers[nowHeader].translationY = (scrollY - headersHeadBounds[nowHeader].first).toFloat()
+        headers[nowHeaderIndex].translationY = (scrollY - headersHeadBounds[nowHeaderIndex].first).toFloat()
 
     }
     private fun releaseHeader(){
 
 
-        if(headersHeadBounds[nowHeader].first>scrollY){
-            headers[nowHeader].translationY=0f
-            if(nowHeader!=0)
-                nowHeader-=1
+        if(headersHeadBounds[nowHeaderIndex].first>scrollY){
+            headers[nowHeaderIndex].translationY=0f
+            if(nowHeaderIndex!=0)
+                nowHeaderIndex-=1
         }
-        else if(headersHeadBounds[nowHeader].second<scrollY)
-            nowHeader+=1
-        if(nowHeader<0)
-            nowHeader=0
-        headersHeadBounds[nowHeader]
+        else if(headersHeadBounds[nowHeaderIndex].second<scrollY){
+            headers[nowHeaderIndex].translationY= (headersHeadBounds[nowHeaderIndex].second-headersHeadBounds[nowHeaderIndex].first).toFloat()
+            nowHeaderIndex+=1
+
+        }
+
+        if(nowHeaderIndex<0)
+            nowHeaderIndex=0
+        headersHeadBounds[nowHeaderIndex]
     }
 
 
@@ -92,5 +94,9 @@ class HeaderScrollView:NestedScrollView {
             headersHeadBounds[index].first=headers[index].top
             headersHeadBounds[index].second=headers[index+1].top-headers[index].height
         }
+    }
+
+    fun getNowHeader():View{
+        return headers[nowHeaderIndex]
     }
 }
