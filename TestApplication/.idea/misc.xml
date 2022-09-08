@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.3611111111111111" />
         <entry key="../../../../layout/custom_preview.xml" value="0.18075539568345322" />
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.239" />
         <entry key="app/src/main/res/drawable/image_frame.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/rectangle_round.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/staggered_shape.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/test_black.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_bottom_sheet_test.xml" value="0.2869807497467072" />
@@ -15,7 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_multi_picker.xml" value="0.2651975683890577" />
         <entry key="app/src/main/res/layout/fragment_post_image_test.xml" value="0.19680851063829788" />
         <entry key="app/src/main/res/layout/fragment_resize_test.xml" value="0.32065217391304346" />
-        <entry key="app/src/main/res/layout/fragment_scroll.xml" value="0.3482789855072464" />
+        <entry key="app/src/main/res/layout/fragment_scroll.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_text_test.xml" value="0.2318840579710145" />
         <entry key="app/src/main/res/layout/source_bottom_sheet_dialog.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/source_calendar_header.xml" value="0.3641304347826087" />
@@ -24,6 +26,7 @@
         <entry key="app/src/main/res/layout/source_grid_text_view_cell.xml" value="0.2318840579710145" />
         <entry key="app/src/main/res/layout/source_item_list_botom_sheet.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/source_item_list_bottom_sheet.xml" value="0.30932971014492755" />
+        <entry key="app/src/main/res/layout/source_item_staggered.xml" value="0.28854166666666664" />
         <entry key="app/src/main/res/layout/source_list_bottom_sheet.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/source_test_toolbar.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/source_toolbar.xml" value="0.3482789855072464" />
