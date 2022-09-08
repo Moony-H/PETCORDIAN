@@ -13,7 +13,7 @@ import com.example.testapplication.StaggeredAdapter
 import com.example.testapplication.data.StaggeredItemData
 import com.example.testapplication.databinding.FragmentScrollBinding
 import com.google.android.material.appbar.AppBarLayout
-import java.lang.Math.abs
+import kotlin.math.abs
 
 class ScrollFragment:Fragment() {
 
@@ -39,25 +39,15 @@ class ScrollFragment:Fragment() {
             StaggeredItemData("강아지${it+1}",uriArray[it],"")
         }
 
-//        val list=listOf(
-//            StaggeredItemData("강아지1", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test1.jpeg"),""),
-//            StaggeredItemData("강아지2", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test2.jpeg"),""),
-//            StaggeredItemData("강아지3", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test3.jpeg"),""),
-//            StaggeredItemData("강아지4", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test4.jpeg"),""),
-//            StaggeredItemData("강아지5", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test5.jpeg"),""),
-//            StaggeredItemData("강아지6", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test6.jpeg"),""),
-//            StaggeredItemData("강아지7", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test7.jpeg"),""),
-//            StaggeredItemData("강아지8", Uri.parse("android.resource://com.example.testapplication/drawable-v24/stagg_test8.jpeg"),""),
-//            )
+
 
         val adapter=StaggeredAdapter(list){
             Toast.makeText(requireContext(),"${it.title} clicked",Toast.LENGTH_SHORT).show()
         }
         binding.fragmentScrollRecyclerview.layoutManager=StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
-        binding.fragmentScrollRecyclerview.scroll
         binding.fragmentScrollRecyclerview.adapter=adapter
-
-
+        binding.fragmentScrollRecyclerview.isNestedScrollingEnabled=false
+        binding.fragmentScrollStickyScrollView
         binding.fragmentScrollAppBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener{appBarLayout, verticalOffset ->
             if(abs(verticalOffset)-appBarLayout.totalScrollRange==0){
                 //접혔을 때
