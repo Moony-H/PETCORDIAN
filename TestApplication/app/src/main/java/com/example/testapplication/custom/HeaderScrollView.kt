@@ -2,6 +2,7 @@ package com.example.testapplication.custom
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
@@ -13,7 +14,13 @@ class HeaderScrollView:NestedScrollView {
     private var headers=ArrayList<View>()
     private lateinit var viewGroup:ViewGroup
     private lateinit var headersHeadBounds:Array<MutablePair<Int,Int>>
+
     private var nowHeaderIndex=0
+    private var headerStuckOnce=true
+
+    private var onHeaderStuck={i:Int,view:View->}
+    private var onScrolling={_:Int->}
+
     constructor(context: Context):super(context){
         init()
     }
@@ -24,17 +31,6 @@ class HeaderScrollView:NestedScrollView {
     private fun init(){
 
 
-        this.viewTreeObserver.addOnDrawListener {
-            if(headersHeadBounds[nowHeaderIndex].first<=scrollY && headersHeadBounds[nowHeaderIndex].second>=scrollY) {
-                stickHeader()
-            }else{
-
-                releaseHeader()
-
-
-            }
-
-        }
 
     }
 
@@ -48,19 +44,23 @@ class HeaderScrollView:NestedScrollView {
         initHeadersHeadBounds()
     }
 
-    private fun stickHeader(){
-        headers[nowHeaderIndex].translationY = (scrollY - headersHeadBounds[nowHeaderIndex].first).toFloat()
-
+    private fun stickHeader(y:Int) {
+        headers[nowHeaderIndex].translationY =
+            (y - headersHeadBounds[nowHeaderIndex].first).toFloat()
+        if (headerStuckOnce) {
+            onHeaderStuck(nowHeaderIndex, headers[nowHeaderIndex])
+            headerStuckOnce = false
+        }
     }
-    private fun releaseHeader(){
+    private fun releaseHeader(y:Int){
 
-
-        if(headersHeadBounds[nowHeaderIndex].first>scrollY){
+        headerStuckOnce=true
+        if(headersHeadBounds[nowHeaderIndex].first>y){
             headers[nowHeaderIndex].translationY=0f
             if(nowHeaderIndex!=0)
                 nowHeaderIndex-=1
         }
-        else if(headersHeadBounds[nowHeaderIndex].second<scrollY){
+        else if(headersHeadBounds[nowHeaderIndex].second<y){
             headers[nowHeaderIndex].translationY= (headersHeadBounds[nowHeaderIndex].second-headersHeadBounds[nowHeaderIndex].first).toFloat()
             nowHeaderIndex+=1
 
@@ -79,6 +79,19 @@ class HeaderScrollView:NestedScrollView {
 
     }
 
+    override fun onScrollChanged(l: Int, y: Int, oldl: Int, oldt: Int) {
+        super.onScrollChanged(l, y, oldl, oldt)
+        Log.d("testing","y is $y")
+        if(headersHeadBounds[nowHeaderIndex].first<=y && headersHeadBounds[nowHeaderIndex].second>=y) {
+            stickHeader(y)
+        }else{
+
+            releaseHeader(y)
+
+
+        }
+
+    }
 
 
 
@@ -98,5 +111,12 @@ class HeaderScrollView:NestedScrollView {
 
     fun getNowHeader():View{
         return headers[nowHeaderIndex]
+    }
+    fun setOnHeaderStuck(onHeaderStuck:(index:Int,header:View)->Unit){
+        this.onHeaderStuck=onHeaderStuck
+    }
+
+    fun setOnScrolling(onScrolling:(y:Int)->Unit){
+        this.onScrolling=onScrolling
     }
 }

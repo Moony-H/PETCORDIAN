@@ -5,5 +5,6 @@ import android.net.Uri
 data class StaggeredItemData(
     val title:String,
     val image:Uri,
-    val date:String
+    val date:String,
+    val viewType:StaggeredViewType
 )

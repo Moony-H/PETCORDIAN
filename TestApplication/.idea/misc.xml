@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/layout/source_item_list_botom_sheet.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/source_item_list_bottom_sheet.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/source_item_staggered.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/layout/source_item_staggered_header.xml" value="0.3223958333333333" />
+        <entry key="app/src/main/res/layout/source_item_staggered_scroll.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/source_list_bottom_sheet.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/source_test_toolbar.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/source_toolbar.xml" value="0.3482789855072464" />
